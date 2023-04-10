@@ -2,7 +2,7 @@ import ContactListItem from '../ContactListItem';
 import { ContactListElement } from './ContactList.styled';
 import { getContacts, getFilter } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -23,12 +23,12 @@ const ContactList = () => {
 
   return (
     <ContactListElement>
-      {getVisibleContacts().map(({ id, name, number }) => {
+      {getVisibleContacts().map(({ id, name, phone }) => {
         return (
           <ContactListItem
             key={id}
             name={name}
-            number={number}
+            phone={phone}
             onDeleteContact={() => {
               handleDeleteContact(id);
             }}

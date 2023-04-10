@@ -9,7 +9,7 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { getContacts } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const initialValues = { name: '', number: '' };
 
@@ -51,7 +51,7 @@ function ContactForm() {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, phone: number }));
 
     resetForm();
   };
